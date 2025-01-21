@@ -28,9 +28,10 @@ const aggType = "sum";
 
 //download csv source data and then make scattergeo plot and generate jexcel table
 Plotly.d3.csv(
+    "https://raw.githubusercontent.com/anthonylai2046/my_component/main/data/covid19-data.csv",
     //"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" + strdate + ".csv",
     //"http://localhost:8501/data/covid19-data.csv",
-    "/data/covid19-data.csv",
+    //"/data/covid19-data.csv",
     //"01-20-2025.csv",
     //"covid19-data.csv",
     //[UPLOADED_FILE],
@@ -51,9 +52,10 @@ Plotly.d3.csv(
             strdate = getOffsetDate(1, "mm-dd-yyyy");
             console.log(strdate);
             Plotly.d3.csv(
+                "https://raw.githubusercontent.com/anthonylai2046/my_component/main/data/covid19-data.csv",
                 //"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_daily_reports/" + strdate + ".csv",
                 //"http://localhost:8501/data/covid19-data.csv",
-                "/data/covid19-data.csv",
+                //"/data/covid19-data.csv",
                 //"01-20-2025.csv",
                 //"covid19-data.csv",
                 //[UPLOADED_FILE],
@@ -633,4 +635,4 @@ bootstrap_html = f"""
 """
 
 # Render the Bootstrap + Plotly + jExcel content in Streamlit
-components.html(bootstrap_html, height=800, width = 1000)
+components.html(bootstrap_html, height=1500, width = 1000)
