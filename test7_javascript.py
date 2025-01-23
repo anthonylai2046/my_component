@@ -130,13 +130,14 @@ function makePlot(err, rows, strdate)
             hoverText.push(currentText);
         }
 
-        //trace1: Confirmed Cases > 100,000
+        //trace1: Confirmed Cases > 1,000,000
         var trace0 = 
             {
                 //name: 'Confirmed > 100,000',
                 name: 'Confirmed > 1,000,000',
                 type: "scattergeo",
                 mode: 'markers',
+                visible: 'legendonly', // Disable this trace by default
                 hoverinfo: 'text',
                 text: hoverText,
                 lon: cityLon,
@@ -168,13 +169,14 @@ function makePlot(err, rows, strdate)
             };
             
 
-        //trace0_1: 50,000 < Confirmed Cases <= 100,000
+        //trace0_1: 500,000 < Confirmed Cases <= 1,000,000
         var trace0_1 = 
             {
                 //name: '50,000 < Confirmed <= 100,000',
                 name: '500,000 < Confirmed <= 1,000,000',
                 type: "scattergeo",
                 mode: 'markers',
+                visible: 'legendonly', // Disable this trace by default
                 hoverinfo: 'text',
                 text: hoverText,
                 lon: cityLon,
@@ -210,13 +212,14 @@ function makePlot(err, rows, strdate)
                 ]
             };			
 
-        //trace1: 10,000 < Confirmed Cases <= 50,000
+        //trace1: 100,000 < Confirmed Cases <= 500,000
         var trace1 = 
             {
                 //name: '10,000 < Confirmed <= 50,000',
                 name: '100,000 < Confirmed <= 500,000',
                 type: "scattergeo",
                 mode: 'markers',
+                visible: 'legendonly', // Disable this trace by default
                 hoverinfo: 'text',
                 text: hoverText,
                 lon: cityLon,
@@ -252,7 +255,7 @@ function makePlot(err, rows, strdate)
                 ]
             };
 
-        //trace2: 1,000 < Confirmed Cases <= 10,000
+        //trace2: 10,000 < Confirmed Cases <= 100,000
         var trace2 = 
             {
                 //name: '1,000 < Confirmed <= 10,000',
@@ -281,7 +284,8 @@ function makePlot(err, rows, strdate)
                 },
                 transforms: [
                   {	type: 'filter',
-                    target: cityCases,					operation: '<=',
+                    target: cityCases,					
+                    operation: '<=',
                     value: 100000
                   },
                   {	type: 'filter',
@@ -293,7 +297,7 @@ function makePlot(err, rows, strdate)
                 ]
             };
 
-        //trace3: 100 < Confirmed Cases <= 1,000
+        //trace3: 1,000 < Confirmed Cases <= 10,000
         var trace3 = 
             {
                 //name: '100 < Confirmed <= 1,000',
@@ -334,7 +338,7 @@ function makePlot(err, rows, strdate)
                 ]
             };
 
-        //trace4: 1 <= Confirmed Cases <= 100
+        //trace4: 100 < Confirmed Cases <= 1,000
         var trace4 = 
             {
                 //name: '1 < Confirmed <= 100',
@@ -478,6 +482,7 @@ function makePlot(err, rows, strdate)
                 }, {
                     args: [{geo: { showland: true, showlakes: true, showocean: true, scope: 'north america', showrivers: true, showcountries: true, landcolor: 'lightgray', oceancolor: '#e8f4f8'}}],
                     label: 'North America',
+                    method: 'relayout',
                 }, {
                     args: [{geo: { showland: true, showlakes: true, showocean: true, scope: 'south america', showrivers: true, showcountries: true, landcolor: 'lightgray', oceancolor: '#e8f4f8'}}],
                     label: 'South America',
@@ -489,8 +494,8 @@ function makePlot(err, rows, strdate)
         
         var config = {responsive: true, displayModeBar: false}; //hide the plotly menubar
         
-        //var data = [trace0, trace0_1, trace1, trace2, trace3, trace4];
-        var data = [trace0_1, trace1, trace2, trace3, trace4];
+        var data = [trace0, trace0_1, trace1, trace2, trace3, trace4];
+        //var data = [trace0_1, trace1, trace2, trace3, trace4];
         //var data = [trace1, trace2, trace3, trace4];
         
         Plotly.newPlot("myDiv", data, layout, config);
