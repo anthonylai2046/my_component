@@ -1,7 +1,8 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-
+# Set page configuration to wide mode
+st.set_page_config(layout="wide")
 #uploaded_file = st.file_uploader("./data/covid19-data.csv")
 #print(f"uploaded_file: {uploaded_file}")
 
